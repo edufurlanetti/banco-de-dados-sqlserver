@@ -1,0 +1,17 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: clinica-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Senha@Forte123"
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./scripts:/scripts:ro
+      - ./exercicios:/exercicios:ro
+      - mssql_data:/var/opt/mssql
+
+volumes:
+  mssql_data:
